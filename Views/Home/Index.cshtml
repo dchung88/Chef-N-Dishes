@@ -1,0 +1,49 @@
+﻿@using Chefs_Dishes.Models
+@model List<Chef>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef 'N Dishes</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/chefs.css">
+</head>
+<body>
+
+    <div class="jumbotron">
+        <h1>Chefs | <a href="dishes">Dishes</a></h1>
+    </div>
+
+    <div class="intro">
+        <h3>Check out our roster of Chefs!</h3>
+        <p>________________________________________________________</p>
+    </div>
+
+    <a class="btn btn-primary" href="new" role="button">Add a Chef</a>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col"># of Dishes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach(Chef newchef in Model)
+                {
+                    <tr>
+                        <td>@newchef.FirstName @newchef.LastName</td>
+                        <td>@newchef.Age</td>
+                        <td>@newchef.MadeDishes.Count</td>
+                    </tr>
+                }
+            }           
+        </tbody>
+    </table>
+    
+</body>
+</html>

@@ -1,0 +1,58 @@
+@using Chefs_Dishes.Models
+@model Dish
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Dish</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/chefs.css">
+</head>
+<body>
+
+    <div class="jumbotron">
+        <h1>Add a Dish!</h1>
+    </div>
+    <a class="btn btn-primary" href="/dishes" role="button">Home</a>
+
+    <form asp-action="AddDish" asp-controller="Home" method="POST">
+
+        <span asp-validation-for="DishName"></span>
+        <label asp-for="DishName">Name of Dish</label>
+        <input asp-for="DishName"><br>
+
+        <span asp-validation-for="Calories"></span>
+        <label asp-for="Calories"># of Calories</label>
+        <input asp-for="Calories"><br>
+
+        <span asp-validation-for="Description"></span>
+        <label asp-for="Description">Description</label>
+        <textarea asp-for="Description"></textarea>><br>
+
+        <span asp-validation-for="ChefId"></span>
+        <label asp-for="ChefId">Chef</label>
+        <select asp-for="ChefId">
+            @foreach(var c in ViewBag.AllChefs)
+            {
+                <option value="@c.ChefId">@c.FirstName @c.LastName</option>
+            }
+        </select><br>
+
+        <span asp-validation-for="Tastiness"></span>
+        <label asp-for="Tastiness">Tastiness</label>
+        <select asp-for="Tastiness">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select><br>
+
+        <input type="submit" value="Add Dish">
+
+    </form>
+    
+</body>
+</html>

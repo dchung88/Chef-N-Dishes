@@ -1,0 +1,52 @@
+@using Chefs_Dishes.Models
+@model List<Dish>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dishes</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/chefs.css">
+</head>
+<body>
+
+    <div class="jumbotron">
+        <h1><a href="/">Chefs</a> | Dishes</h1>
+    </div>
+
+    <div class="intro">
+        <h3>Yum, take a look at our tasty dishes!</h3>
+        <p>__________________________________________________________________</p>
+    </div>
+
+    <a class="btn btn-primary" href="dish/new" role="button">Add a Dish</a>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Chef</th>
+                <th scope="col">Tastiness</th>
+                <th scope="col">Calories</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.AllDishes != null)
+            {
+                @foreach(var d in ViewBag.AllDishes)
+                {
+                    <tr>
+                        <td>@d.DishName</td>
+                        <td>@d.Creator.FirstName @d.Creator.LastName</td>
+                        <td>@d.Tastiness</td>
+                        <td>@d.Calories</td>
+                    </tr>
+                }  
+            }        
+        </tbody>
+    </table>
+    
+</body>
+</html>

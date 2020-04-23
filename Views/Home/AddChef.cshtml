@@ -1,0 +1,39 @@
+@using Chefs_Dishes.Models
+@model Chef
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Chef</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/chefs.css">
+</head>
+<body>
+
+    <div class="jumbotron">
+        <h1>Add a Chef!</h1>
+    </div>
+    <a class="btn btn-primary" href="/" role="button">Home</a>
+
+    <form asp-action="AddChef" asp-controller="Home" method="POST">
+
+        <span asp-validation-for="FirstName"></span>
+        <label asp-for="FirstName">First Name</label>
+        <input asp-for="FirstName"><br>
+
+        <span asp-validation-for="LastName"></span>
+        <label asp-for="LastName">Last Name</label>
+        <input asp-for="LastName"><br>
+
+        <span asp-validation-for="Birthday"></span>
+        <label asp-for="Birthday">Birthdate</label>
+        <input type="date" asp-for="Birthday"><br>
+
+        <input type="submit" value="Add Chef">
+
+    </form>
+    
+</body>
+</html>
